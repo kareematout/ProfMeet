@@ -2,7 +2,7 @@
 # Version: 0.2
 
 # who did what:
-1. 
+1. Lydia Essombe-Mpacko - 
 2. 
 3. 
 3. 
