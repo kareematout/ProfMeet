@@ -19,7 +19,16 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+
+        //test new page
+        Button testPageButton = new Button("test");
+        testPageButton.setOnAction(event -> {
+            Scene officeHoursScene = OfficeHoursScene(stage);
+            stage.setScene(officeHoursScene);
+        });
+        scene.setRoot(testPageButton);
+
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
@@ -30,10 +39,10 @@ public class Main extends Application {
         Label header = new Label("Create Office\nHours");
         header.setStyle("-fx-font-weight: bold; -fx-font-size: 50px;");
 
-        HBox profEmailFlow = createEmailTextFlow("Professor Email:", "professor@sjsu.edu");
-        HBox stuEmailFlow = createEmailTextFlow("Student Email:", "student@sjsu.edu");
+        HBox profEmail = createEmailHbox("Professor Email:", "professor@sjsu.edu");
+        HBox stuEmail = createEmailHbox("Student Email:", "student@sjsu.edu");
 
-        VBox emails = new VBox(profEmailFlow, stuEmailFlow);
+        VBox emails = new VBox(profEmail, stuEmail);
         emails.setSpacing(5);
         emails.setMaxWidth(300);
 
@@ -44,7 +53,7 @@ public class Main extends Application {
         return new Scene(layout, 1000, 600);
     }
 
-    private HBox createEmailTextFlow(String label, String email) {
+    private HBox createEmailHbox(String label, String email) {
         Text labelText = new Text(label + "\n");
         Text emailText = new Text(email);
         emailText.setStyle("-fx-font-weight: bold; -fx-font-size: 20px;");
