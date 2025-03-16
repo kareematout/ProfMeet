@@ -1,14 +1,19 @@
 package s25.cs151.application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 public class MainController {
     @FXML
-    private Label welcomeText;
+    private ComboBox<String> semesterComboBox;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private TextField yearTextField;
+
+    @FXML 
+    private CheckBox mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox;
+
+    @FXML
+    private Button submitButton;
     }
 }
