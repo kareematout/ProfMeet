@@ -4,6 +4,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class MainController {
+
+    @FXML
+    private Button bookOfficeHoursButton;
+
+    @FXML
+    private Button viewMeetingsButton;
+
+    @FXML
+    private void bookOfficeHours() {
+        System.out.println("Book Office Hours clicked!");
+    }
+
+    @FXML
+    private void viewMeetings() {
+        System.out.println("View Meetings clicked!");
+    }
+    
     @FXML
     private ComboBox<String> semesterComboBox;
 
