@@ -18,24 +18,16 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
 
-        //test new page
-        Button testPageButton = new Button("test");
-        testPageButton.setOnAction(event -> {
-            Scene officeHoursScene = OfficeHoursScene(stage);
-            stage.setScene(officeHoursScene);
-        });
-        scene.setRoot(testPageButton);
-
-        stage.setTitle("Hello!");
+        stage.setTitle("ProfMeet - Home");
         stage.setScene(scene);
         stage.show();
 
     }
 
-    private Scene OfficeHoursScene(Stage stage) {
+    public static Scene OfficeHoursScene(Stage stage) {
         Label header = new Label("Create Office\nHours");
         header.setStyle("-fx-font-weight: bold; -fx-font-size: 50px;");
 
@@ -59,7 +51,7 @@ public class Main extends Application {
         return new Scene(layout, 1000, 600);
     }
 
-    private HBox CreateEmailHBox(String label, String email) {
+    private static HBox CreateEmailHBox(String label, String email) {
         Text labelText = new Text(label + "\n");
         Text emailText = new Text(email);
         emailText.setStyle("-fx-font-weight: bold; -fx-font-size: 20px;");
@@ -68,7 +60,7 @@ public class Main extends Application {
         emailFlow.setPrefWidth(350);
 
         ImageView emailIcon = new ImageView(new Image(
-                getClass().getResourceAsStream("/images/email-icon.png"),
+                Main.class.getResourceAsStream("/images/email-icon.png"),
                 40,
                 40,
                 true,
@@ -88,7 +80,7 @@ public class Main extends Application {
         return layout;
     }
 
-    private VBox CreateFormVBox() {
+    private static VBox CreateFormVBox() {
         try{
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
             VBox dropdownContent = loader.load();

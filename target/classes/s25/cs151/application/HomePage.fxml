@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="s25.cs151.application.HomeController"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #6C47FF;">
+            <Label text="ProfMeet" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+            <Button text="Office Hours" onAction="#handleOfficeHours"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
+            <Label text="Welcome to ProfMeet" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+            <Label text="Connect with your professors easily."
+                   style="-fx-font-size: 16px; -fx-text-fill: #555555;"/>
+
+            <Button text="Go to Office Hours" onAction="#handleOfficeHours"
+                    style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 5;"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #f5f5f5;">
+            <Label text="© 2025 ProfMeet. All rights reserved." style="-fx-font-size: 12px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
