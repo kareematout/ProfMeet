@@ -6,33 +6,44 @@
 <VBox fx:controller="s25.cs151.application.MainController"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      spacing="10"
+      spacing="15"
       alignment="CENTER"
-      style="-fx-padding: 20; -fx-background-color: white;">
+      style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
 
-  <Label text="Create Office Hours" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+  <Label text="Create Office Hours"
+         style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
 
-  <HBox spacing="10">
-    <Label text="Semester *"/>
-    <ComboBox fx:id="semesterComboBox"/>
+  <HBox spacing="10"
+        style="-fx-padding: 10; -fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-border-radius: 5;">
+    <Label text="Semester *"
+           style="-fx-font-size: 14px; -fx-text-fill: #555555;"/>
+    <ComboBox fx:id="semesterComboBox"
+              style="-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-border-radius: 3;"/>
   </HBox>
 
-  <HBox spacing="10">
-    <Label text="Year *"/>
-    <TextField fx:id="yearField" promptText="Ex: 2025"/>
+  <HBox spacing="10"
+        style="-fx-padding: 10; -fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-border-radius: 5;">
+    <Label text="Year *"
+           style="-fx-font-size: 14px; -fx-text-fill: #555555;"/>
+    <TextField fx:id="yearField" promptText="Ex: 2025"
+               style="-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-border-radius: 3;"/>
   </HBox>
 
-  <VBox spacing="5">
-    <Label text="Days *"/>
-    <HBox spacing="10">
-      <CheckBox fx:id="mondayCheckBox" text="Monday"/>
-      <CheckBox fx:id="tuesdayCheckBox" text="Tuesday"/>
-      <CheckBox fx:id="wednesdayCheckBox" text="Wednesday"/>
-      <CheckBox fx:id="thursdayCheckBox" text="Thursday"/>
-      <CheckBox fx:id="fridayCheckBox" text="Friday"/>
+  <VBox spacing="5"
+        style="-fx-padding: 10; -fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-border-radius: 5;">
+    <Label text="Days *"
+           style="-fx-font-size: 14px; -fx-text-fill: #555555;"/>
+    <HBox spacing="10" style="-fx-padding: 5;">
+      <CheckBox fx:id="mondayCheckBox" text="Monday" style="-fx-font-size: 12px;"/>
+      <CheckBox fx:id="tuesdayCheckBox" text="Tuesday" style="-fx-font-size: 12px;"/>
+      <CheckBox fx:id="wednesdayCheckBox" text="Wednesday" style="-fx-font-size: 12px;"/>
+      <CheckBox fx:id="thursdayCheckBox" text="Thursday" style="-fx-font-size: 12px;"/>
+      <CheckBox fx:id="fridayCheckBox" text="Friday" style="-fx-font-size: 12px;"/>
     </HBox>
   </VBox>
 
-  <Button fx:id="submitButton" text="Submit" style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#handleSubmit"/>
+  <Button fx:id="submitButton" text="Submit"
+          style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 5;"
+          onAction="#handleSubmit"/>
 
 </VBox>
