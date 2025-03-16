@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 
-<VBox fx:controller="s25.cs151.application.MainController"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      spacing="20"
-      alignment="CENTER"
-      style="-fx-padding: 20;
-             -fx-background-color: rgba(50, 50, 50, 0.1);
-             -fx-background-radius: 15px;
-             -fx-font-size: 16px;
-             -fx-max-width: 500px;
-             -fx-translate-y: 50;">
+<AnchorPane xmlns:fx="http://javafx.com/fxml">
+    <VBox spacing="10" alignment="CENTER" prefWidth="800" prefHeight="450">
+        
+        <!-- Title and Icon -->
+        <HBox alignment="CENTER">
+            <ImageView fitHeight="50" fitWidth="50">
+                <Image url="@icon.png" />
+            </ImageView>
+            <Text text="PROFMEET" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+        </HBox>
 
-  <!-- Header Section -->
-  <Label text="PROFMEET"
-         style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+        <!-- Slogan -->
+        <Text text="Smart Scheduling for Smarter Teaching" style="-fx-font-size: 16px;" />
 
-  <Label text="Smart Scheduling for Smarter Teaching"
-         style="-fx-font-size: 16px; -fx-text-alignment: center;"/>
+        <!-- Buttons -->
+        <Button text="Book Office Hours" onAction="bookOfficeHours" />
+        <Button text="View Meetings" onAction="viewMeetings" />
 
-  <!-- Buttons Section -->
-  <VBox spacing="15" style="-fx-font-size: 14px;">
-    <Button fx:id="bookOfficeHoursButton"
-            text="Book Office Hours"
-            style="-fx-background-color: #6C47FF;
-                       -fx-text-fill: white;
-                       -fx-font-weight: bold;
-                       -fx-padding: 10 20;"
-            onAction="#bookOfficeHours"/>
+        <!-- Embedded Script for Logic -->
+        <fx:script>
+            <![CDATA[
+            import javafx.scene.control.Alert;
+            import javafx.scene.control.Alert.AlertType;
 
-    <Button fx:id="viewMeetingsButton"
-            text="View Meetings"
-            style="-fx-background-color: #6C47FF;
-                       -fx-text-fill: white;
-                       -fx-font-weight: bold;
-                       -fx-padding: 10 20;"
-            onAction="#viewMeetings"/>
-  </VBox>
+            public void bookOfficeHours() {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Booking");
+                alert.setHeaderText(null);
+                alert.setContentText("Book Office Hours clicked!");
+                alert.showAndWait();
+            }
 
-</VBox>
+            public void viewMeetings() {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Meetings");
+                alert.setHeaderText(null);
+                alert.setContentText("View Meetings clicked!");
+                alert.showAndWait();
+            }
+            ]]>
+        </fx:script>
+
+    </VBox>
+</AnchorPane>
