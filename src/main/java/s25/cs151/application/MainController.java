@@ -15,5 +15,5 @@ public class MainController {
 
     @FXML
     private Button submitButton;
-    }
+
 }
