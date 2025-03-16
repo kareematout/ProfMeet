@@ -2,7 +2,7 @@
 # Version: 0.2
 
 # who did what:
-1. Lydia Essombe-Mpacko - MainController 
+1. Lydia Essombe-Mpacko - Define Semester's Office Hours Page
 2. 
 3. 
 3. 
