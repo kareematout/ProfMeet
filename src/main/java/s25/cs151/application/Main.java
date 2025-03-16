@@ -18,7 +18,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
 
         //test new page
@@ -39,21 +39,27 @@ public class Main extends Application {
         Label header = new Label("Create Office\nHours");
         header.setStyle("-fx-font-weight: bold; -fx-font-size: 50px;");
 
-        HBox profEmail = createEmailHbox("Professor Email:", "professor@sjsu.edu");
-        HBox stuEmail = createEmailHbox("Student Email:", "student@sjsu.edu");
+        HBox profEmail = CreateEmailHBox("Professor Email:", "professor@sjsu.edu");
+        HBox stuEmail = CreateEmailHBox("Student Email:", "student@sjsu.edu");
 
         VBox emails = new VBox(profEmail, stuEmail);
         emails.setSpacing(5);
         emails.setMaxWidth(300);
 
-        VBox layout = new VBox(header, emails);
-        layout.setStyle("-fx-padding: 100 0 0 120;");
+        VBox form = CreateFormVBox();
+
+
+        VBox infoPanel = new VBox(header, emails);
+        infoPanel.setStyle("-fx-padding: 100 0 0 120;");
+        infoPanel.setSpacing(50);
+
+        HBox layout = new HBox(infoPanel, form);
         layout.setSpacing(50);
 
         return new Scene(layout, 1000, 600);
     }
 
-    private HBox createEmailHbox(String label, String email) {
+    private HBox CreateEmailHBox(String label, String email) {
         Text labelText = new Text(label + "\n");
         Text emailText = new Text(email);
         emailText.setStyle("-fx-font-weight: bold; -fx-font-size: 20px;");
@@ -74,12 +80,30 @@ public class Main extends Application {
         String emailStyle =
                 "-fx-font-size: 15px;" +
                 " -fx-background-color: rgba(100, 0, 100, 0.05);" +
-                " -fx-padding: 20px;" +
+                " -fx-padding: 50 20 20 20px;" +
                 " -fx-background-radius: 20px;";
 
         layout.setStyle(emailStyle);
 
         return layout;
+    }
+
+    private VBox CreateFormVBox() {
+        try{
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
+            VBox dropdownContent = loader.load();
+            VBox layout = new VBox();
+            layout.setStyle(dropdownContent.getStyle());
+            layout.setSpacing(dropdownContent.getSpacing());
+            layout.setAlignment(dropdownContent.getAlignment());
+            layout.getChildren().addAll(dropdownContent.getChildren());
+            return layout;
+        }
+        catch (IOException e) {
+            // Handle the exception
+            e.printStackTrace();
+            return new VBox(new Text("Error loading form"));
+        }
     }
 
     public static void main(String[] args) {
