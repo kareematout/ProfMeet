@@ -2,25 +2,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml">
-    <VBox spacing="10" alignment="CENTER" prefWidth="800" prefHeight="450">
+    <VBox spacing="15" alignment="CENTER" prefWidth="800" prefHeight="450">
         
-        <!-- Title and Icon -->
-        <HBox alignment="CENTER">
-            <ImageView fitHeight="50" fitWidth="50">
-                <Image url="@icon.png" />
-            </ImageView>
-            <Text text="PROFMEET" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-        </HBox>
+        <!-- Title -->
+        <Text text="PROFMEET" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
 
         <!-- Slogan -->
         <Text text="Smart Scheduling for Smarter Teaching" style="-fx-font-size: 16px;" />
 
         <!-- Buttons -->
-        <Button text="Book Office Hours" onAction="bookOfficeHours" />
-        <Button text="View Meetings" onAction="viewMeetings" />
+        <Button text="Book Office Hours" onAction="bookOfficeHours" style="-fx-font-size: 14px;" />
+        <Button text="View Meetings" onAction="viewMeetings" style="-fx-font-size: 14px;" />
 
         <!-- Embedded Script for Logic -->
         <fx:script>
