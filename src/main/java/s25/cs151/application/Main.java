@@ -80,7 +80,7 @@ public class Main extends Application {
         String emailStyle =
                 "-fx-font-size: 15px;" +
                 " -fx-background-color: rgba(100, 0, 100, 0.05);" +
-                " -fx-padding: 50 20 20 20px;" +
+                " -fx-padding: 20 20 20 20px;" +
                 " -fx-background-radius: 20px;";
 
         layout.setStyle(emailStyle);
