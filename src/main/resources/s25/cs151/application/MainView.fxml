@@ -24,7 +24,7 @@
 
   <HBox spacing="10">
     <Label text="Year *"/>
-    <TextField fx:id="yearField" promptText="Ex: 2025"/>
+    <TextField fx:id="yearTextField" promptText="Ex: 2025"/>
   </HBox>
 
   <VBox spacing="5" style="-fx-font-size: 14">
