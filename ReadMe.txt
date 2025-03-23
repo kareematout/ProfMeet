@@ -5,7 +5,7 @@
 1. Lydia Essombe-Mpacko - Store data into csv
 2. Kareem Atout - Added table displaying
 3. Anita Huang - Added button controls and UI
-4. Kyle Chu - Added table sorting
+4. Kyle Chu - Added office hours sorting and controls
 
 
 # Any other instruction that users need to know:
