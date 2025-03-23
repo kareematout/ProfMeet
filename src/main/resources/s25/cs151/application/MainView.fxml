@@ -38,6 +38,6 @@
     </HBox>
   </VBox>
 
-  <Button fx:id="submitButton" text="Submit" style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#submitOfficeHours"/>
+  <Button text="Submit" style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#submitOfficeHours"/>
 
 </VBox>
