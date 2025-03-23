@@ -1,11 +1,11 @@
 # Name of application: ProfMeet
-# Version: 0.2
+# Version: 0.4
 
 # who did what:
-1. Lydia Essombe-Mpacko - Worked on Semester Office Hours Page
-2. Kareem Atout - Worked on Semester Office Hours Page
-3. Anita Huang - Worked on Home Page
-4. Kyle Chu - Worked on Home Page
+1. Lydia Essombe-Mpacko - 
+2. Kareem Atout - 
+3. Anita Huang - 
+4. Kyle Chu - 
 
 
 # Any other instruction that users need to know:
