@@ -40,10 +40,23 @@ public class Main extends Application {
 
         VBox form = CreateFormVBox();
 
-
         VBox infoPanel = new VBox(header, emails);
         infoPanel.setStyle("-fx-padding: 100 0 0 120;");
         infoPanel.setSpacing(50);
+
+        Button homeButton = new Button("Home");
+        homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white;");
+        homeButton.setOnAction(e -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
+                stage.setScene(new Scene(loader.load(), 1000, 600));
+                stage.setTitle("ProfMeet - Home");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        infoPanel.getChildren().add(homeButton);
 
         HBox layout = new HBox(infoPanel, form);
         layout.setSpacing(50);

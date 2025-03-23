@@ -1,6 +1,7 @@
 package s25.cs151.application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -159,5 +160,17 @@ public class MainController {
         stage.setScene(officeHoursScene);
     }
 
+    @FXML
+    private void goToHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            Scene scene = new Scene(loader.load(), 1000, 600);
+            Stage stage = (Stage) semesterComboBox.getScene().getWindow();
+            stage.setTitle("ProfMeet - Home");
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

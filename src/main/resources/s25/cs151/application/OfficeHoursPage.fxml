@@ -10,7 +10,10 @@
             style="-fx-background-color: #F9F9F9;">
 
     <VBox spacing="15" layoutX="20" layoutY="20" style="-fx-padding: 20;">
-        <Label text="Stored Office Hours" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Label text="Stored Office Hours" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <Button text="Home" onAction="#goToHome" style="-fx-background-color: #6C47FF; -fx-text-fill: white;"/>
+        </HBox>
 
         <TableView fx:id="tableView" prefWidth="600" prefHeight="400" style="-fx-background-color: white; -fx-border-color: #DDD;">
             <columns>

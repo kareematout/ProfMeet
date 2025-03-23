@@ -3,9 +3,12 @@ package s25.cs151.application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,6 +42,19 @@ public class DisplayOfficeHoursController {
 
         loadOfficeHoursFromCSV();
         tableView.setItems(officeHoursList);
+    }
+
+    @FXML
+    private void goToHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            Scene scene = new Scene(loader.load(), 1000, 600);
+            Stage stage = (Stage) tableView.getScene().getWindow();
+            stage.setTitle("ProfMeet - Home");
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadOfficeHoursFromCSV() {
