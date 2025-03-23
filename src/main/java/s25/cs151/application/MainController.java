@@ -6,6 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class MainController {
@@ -18,6 +24,9 @@ public class MainController {
 
     @FXML 
     private CheckBox mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox;
+
+    @FXML
+    private ObservableList<OfficeHour> officeHoursList = FXCollections.observableArrayList();
 
     public void initialize() {
         // Initialize the combo box with the semesters and set the default value
@@ -46,6 +55,19 @@ public class MainController {
             showErrorMessage("You must select at least one day.");
             return;
         }
+
+        // Check for duplicate semester-year combination
+        if (isDuplicateEntry(semester, year)) {
+            showErrorMessage("This semester and year combination already exists.");
+            return;
+        }
+
+        // Save the data to CSV
+        saveToCSV(semester, year, selectedDays);
+
+        // Create a new OfficeHour object and add it to the list
+        OfficeHour officeHour = new OfficeHour(semester, year, selectedDays);
+        officeHoursList.add(officeHour);
         
         String officeHourCombination = semester + " " + year + ": " + selectedDays;
         
@@ -66,6 +88,35 @@ public class MainController {
             days = days.substring(0, days.length() - 2);
         }
         return days;
+    }
+
+    // Method to check for duplicate semester-year combination
+    private boolean isDuplicateEntry(String semester, String year) {
+        for (OfficeHour officeHour : officeHoursList) {
+            if (officeHour.getSemester().equals(semester) && officeHour.getYear().equals(year)) {
+                return true; // Duplicate found
+            }
+        }
+        return false; // No duplicate found
+    }
+
+    // Method to save data to a CSV file
+    private void saveToCSV(String semester, String year, String days) {
+        File file = new File(System.getProperty("user.dir") + "/ProfMeet-master/src/main/resources/office_hours.csv");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            // Write the header if the file is empty
+            if (file.length() == 0) {
+                writer.write("Semester,Year,Day(s)\n");
+            }
+
+            // Write the user input (semester, year, and days)
+            writer.write(semester + "," + year + "," + days + "\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the error (could show an alert in the UI)
+        }
     }
 
     // Show an error message
