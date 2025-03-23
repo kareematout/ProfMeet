@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="s25.cs151.application.DisplayOfficeHoursController"
+            xmlns="http://javafx.com/javafx"
+            prefWidth="640" prefHeight="480"
+            style="-fx-background-color: #F9F9F9;">
+
+    <VBox spacing="15" layoutX="20" layoutY="20" style="-fx-padding: 20;">
+        <Label text="Stored Office Hours" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+        <TableView fx:id="tableView" prefWidth="600" prefHeight="400" style="-fx-background-color: white; -fx-border-color: #DDD;">
+            <columns>
+                <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="150"/>
+                <TableColumn fx:id="yearColumn" text="Year" prefWidth="150"/>
+                <TableColumn fx:id="daysColumn" text="Day(s)" prefWidth="300"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+</AnchorPane>

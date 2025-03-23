@@ -23,6 +23,8 @@
 
             <Button text="Go to Office Hours" onAction="#handleOfficeHours"
                     style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 5;"/>
+            <Button text="View Stored Office Hours" onAction="#handleViewStoredOfficeHours"
+                    style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 5;"/>
         </VBox>
     </center>
 
