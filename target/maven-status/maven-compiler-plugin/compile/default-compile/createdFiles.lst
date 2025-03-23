@@ -1,4 +1,5 @@
 module-info.class
 s25/cs151/application/MainController.class
 s25/cs151/application/Main.class
+s25/cs151/application/OfficeHour.class
 s25/cs151/application/HomeController.class

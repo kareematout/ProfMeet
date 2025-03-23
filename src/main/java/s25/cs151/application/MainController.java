@@ -100,24 +100,37 @@ public class MainController {
         return false; // No duplicate found
     }
 
-    // Method to save data to a CSV file
     private void saveToCSV(String semester, String year, String days) {
-        File file = new File(System.getProperty("user.dir") + "/ProfMeet-master/src/main/resources/office_hours.csv");
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-            // Write the header if the file is empty
-            if (file.length() == 0) {
-                writer.write("Semester,Year,Day(s)\n");
+        // Define the file path
+        File file = new File("data/office_hours.csv");
+        try {
+            // Ensure parent directory exists
+            File parentDir = file.getParentFile();
+            if (!parentDir.exists()) {
+                System.out.println("Creating directory: " + parentDir);
+                parentDir.mkdirs();
             }
 
-            // Write the user input (semester, year, and days)
-            writer.write(semester + "," + year + "," + days + "\n");
+            // Create file if it doesn't exist
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            // Write to the file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+                // Write header if file is empty
+                if (file.length() == 0) {
+                    writer.write("Semester,Year,Day(s)\n");
+                }
+                writer.write(semester + "," + year + "," + days + "\n");
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the error (could show an alert in the UI)
+            showErrorMessage("Failed to save office hours: " + e.getMessage());
         }
     }
+
 
     // Show an error message
     private void showErrorMessage(String message) {
