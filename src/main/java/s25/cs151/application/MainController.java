@@ -102,7 +102,7 @@ public class MainController {
 
     // Method to save data to a CSV file
     private void saveToCSV(String semester, String year, String days) {
-        File file = new File(System.getProperty("user.dir") + "/ProfMeet-master/src/main/resources/office_hours.csv");
+        File file = new File(System.getProperty("user.dir") + "/src/main/resources/office_hours.csv");
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             // Write the header if the file is empty
