@@ -23,6 +23,7 @@ public class TimeSlotsController extends NavigationController {
     public void initialize() {
         fillTimeSlotComboBox(fromTimeSlotComboBox);
         fillTimeSlotComboBox(toTimeSlotComboBox);
+        loadTimesFromCSV();
     }
 
     private void fillTimeSlotComboBox(ComboBox<String> comboBox) {
