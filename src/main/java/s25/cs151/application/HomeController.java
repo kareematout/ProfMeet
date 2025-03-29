@@ -29,4 +29,16 @@ public class HomeController {
         }
     }
 
+    @FXML
+    private void handleTimeSlots(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("TimeSlotsPage.fxml"));
+            stage.setScene(new Scene(loader.load(), 1000, 600));
+            stage.setTitle("ProfMeet - Time Slots");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

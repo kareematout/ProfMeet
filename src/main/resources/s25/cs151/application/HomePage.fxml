@@ -1,36 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="s25.cs151.application.HomeController"
-            xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.HomeController">
 
     <top>
-        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #6C47FF;">
-            <Label text="ProfMeet" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-
-            <Button text="Office Hours" onAction="#handleOfficeHours"
-                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: #6C47FF;">
+            <Label text="ProfMeet" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="32.0" />
+            </font></Label>
         </HBox>
     </top>
 
     <center>
-        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
-            <Label text="Welcome to ProfMeet" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
-            <Label text="Connect with your professors easily."
-                   style="-fx-font-size: 16px; -fx-text-fill: #555555;"/>
-
-            <Button text="Go to Office Hours" onAction="#handleOfficeHours"
-                    style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 5;"/>
-            <Button text="View Stored Office Hours" onAction="#handleViewStoredOfficeHours"
-                    style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 5;"/>
+        <VBox alignment="CENTER" prefHeight="327.0" prefWidth="655.0" spacing="20" style="-fx-padding: 30;">
+            <Label style="-fx-font-size: 32px; -fx-font-weight: bold;" text="Welcome to ProfMeet" />
+            <Label style="-fx-font-size: 16px; -fx-text-fill: #555555;" text="Connect with your professors easily." />
+         <HBox alignment="CENTER" prefHeight="213.0" prefWidth="940.0">
+            <children>
+               <VBox prefHeight="192.0" prefWidth="228.0">
+                  <children>
+                     <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #6447D1; -fx-background-radius: 5;" text="Define Time Slots" textFill="WHITE" onAction="#handleTimeSlots">
+                        <VBox.margin>
+                           <Insets bottom="30.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #6447D1; -fx-background-radius: 5;" text="Veiw Stored Time Slots" textFill="WHITE">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
+                  </children>
+                  <HBox.margin>
+                     <Insets right="100.0" />
+                  </HBox.margin>
+               </VBox>
+               <VBox prefHeight="192.0" prefWidth="228.0">
+                  <children>
+            
+                              <Button onAction="#handleOfficeHours" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #6C47FF; -fx-background-radius: 5;" text="Go to Office Hours" textFill="WHITE">
+                        <VBox.margin>
+                           <Insets bottom="30.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                        <Button onAction="#handleViewStoredOfficeHours" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #6C47FF; -fx-background-radius: 5;" text="View Stored Office Hours" textFill="WHITE">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="192.0" prefWidth="228.0">
+                  <children>
+                     <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #8247FF; -fx-background-radius: 5;" text="Define Courses" textFill="WHITE">
+                        <VBox.margin>
+                           <Insets bottom="30.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #8247FF; -fx-background-radius: 5;" text="View Stored Courses" textFill="WHITE">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
+                  </children>
+                  <HBox.margin>
+                     <Insets left="100.0" />
+                  </HBox.margin>
+               </VBox>
+            </children>
+            <VBox.margin>
+               <Insets top="30.0" />
+            </VBox.margin>
+         </HBox>
         </VBox>
     </center>
 
     <bottom>
         <HBox alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #f5f5f5;">
-            <Label text="© 2025 ProfMeet. All rights reserved." style="-fx-font-size: 12px;"/>
+            <Label style="-fx-font-size: 12px;" text="© 2025 ProfMeet. All rights reserved." />
         </HBox>
     </bottom>
 

@@ -1,12 +1,7 @@
 package s25.cs151.application;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.BufferedWriter;
@@ -150,27 +145,4 @@ public class MainController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    @FXML
-    private void handleOfficeHours(ActionEvent event) {
-        // Get the current stage from the event source
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        // Use Main's method to create the Office Hours scene
-        Scene officeHoursScene = Main.OfficeHoursScene(stage);
-        stage.setScene(officeHoursScene);
-    }
-
-    @FXML
-    private void goToHome() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) semesterComboBox.getScene().getWindow();
-            stage.setTitle("ProfMeet - Home");
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

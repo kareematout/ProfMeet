@@ -43,9 +43,10 @@ public class Main extends Application {
         VBox infoPanel = new VBox(header, emails);
         infoPanel.setStyle("-fx-padding: 100 0 0 120;");
         infoPanel.setSpacing(50);
+        infoPanel.setMinWidth(400);
 
         Button homeButton = new Button("Home");
-        homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white;");
+        homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-size: 18px");
         homeButton.setOnAction(e -> {
             try {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
