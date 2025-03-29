@@ -1,19 +1,19 @@
 package s25.cs151.application;
 
 public class TimeSlot {
-    private String fromHour;
-    private String toHour;
+    private String fromTime;
+    private String toTime;
 
-    public TimeSlot(String fromHour, String toHour) {
-        this.fromHour = fromHour;
-        this.toHour = toHour;
+    public TimeSlot(String fromHour, String toTime) {
+        this.fromTime = fromHour;
+        this.toTime = toTime;
     }
 
     // getters
-    public String getFromHour() { return fromHour; }
-    public String getToHour() { return toHour; }
+    public String getFromTime() { return fromTime; }
+    public String getToTime() { return toTime; }
 
     // setters
-    public void setFromHour(String fromHour) { this.fromHour = fromHour; }
-    public void setToHour(String toHour) { this.toHour = toHour; }
+    public void setFromHour(String fromHour) { this.fromTime = fromHour; }
+    public void setToTime(String toTime) { this.toTime = toTime; }
 }
