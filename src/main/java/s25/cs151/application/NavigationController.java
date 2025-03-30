@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class NavigationController {
     @FXML
-    private void goToHome(ActionEvent event) {
+    public void goToHome(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             Scene scene = new Scene(loader.load(), 1000, 600);

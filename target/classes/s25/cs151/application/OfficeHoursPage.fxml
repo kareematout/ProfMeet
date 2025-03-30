@@ -1,46 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="s25.cs151.application.TimeSlotViewerController"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="s25.cs151.application.DisplayOfficeHoursController"
+            xmlns="http://javafx.com/javafx"
             prefWidth="640" prefHeight="480"
             style="-fx-background-color: #F9F9F9;">
 
-    <!-- Outer layout container with padding -->
-    <VBox spacing="15" style="-fx-padding: 20;">
-
-        <!-- Top row with title label and 'Home' button -->
+    <VBox spacing="15" layoutX="20" layoutY="20" style="-fx-padding: 20;">
         <HBox spacing="20" alignment="CENTER_LEFT" prefWidth="600">
-            <Label text="Stored Time Slots"
-                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" />
-            <Button text="Home"
-                    onAction="#goToHome"
-                    style="-fx-background-color: #6C47FF; -fx-text-fill: white;" />
+            <Label text="Stored Office Hours" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <Button text="Home" onAction="#goToHome" style="-fx-background-color: #6C47FF; -fx-text-fill: white;"/>
         </HBox>
 
-        <!-- TableView to display the CSV data -->
-        <TableView fx:id="timeSlotTable"
-                   prefWidth="600"
-                   prefHeight="300"
-                   style="-fx-background-color: white; -fx-border-color: #DDD;">
+        <TableView fx:id="tableView" prefWidth="600" prefHeight="400" style="-fx-background-color: white; -fx-border-color: #DDD;">
             <columns>
-                <TableColumn fx:id="fromTimeColumn" text="From Time" prefWidth="250" />
-                <TableColumn fx:id="toTimeColumn" text="To Time" prefWidth="350" />
+                <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="150"/>
+                <TableColumn fx:id="yearColumn" text="Year" prefWidth="150"/>
+                <TableColumn fx:id="daysColumn" text="Day(s)" prefWidth="300"/>
             </columns>
         </TableView>
-
-        <!-- Button to load CSV data -->
-        <Button text="Load Data"
-                onAction="#loadData"
-                style="-fx-background-color: #6C47FF; -fx-text-fill: white;"
-                prefWidth="100">
-            <font>
-                <Font size="14" />
-            </font>
-        </Button>
     </VBox>
+
 </AnchorPane>
