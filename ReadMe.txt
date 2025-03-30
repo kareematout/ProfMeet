@@ -1,11 +1,11 @@
 # Name of application: ProfMeet
-# Version: 0.4
+# Version: 0.5
 
 # who did what:
-1. Lydia Essombe-Mpacko - Store data into csv
-2. Kareem Atout - Added table displaying
-3. Anita Huang - Added button controls and UI
-4. Kyle Chu - Added office hours sorting and controls
+1. Lydia Essombe-Mpacko - Define Courses Page
+2. Kareem Atout - Define Semester's Time Slots Page
+3. Anita Huang - Courses Table
+4. Kyle Chu - Time Slots Table
 
 
 # Any other instruction that users need to know:
