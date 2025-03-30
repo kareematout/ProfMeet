@@ -1,6 +1,10 @@
 s25/cs151/application/DisplayOfficeHoursController.class
-module-info.class
+s25/cs151/application/NavigationController.class
 s25/cs151/application/MainController.class
+s25/cs151/application/TimeSlot.class
+s25/cs151/application/HomeController.class
+s25/cs151/application/TimeSlotViewerController.class
+module-info.class
 s25/cs151/application/Main.class
 s25/cs151/application/OfficeHour.class
-s25/cs151/application/HomeController.class
+s25/cs151/application/TimeSlotsController.class

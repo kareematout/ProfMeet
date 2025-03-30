@@ -35,7 +35,9 @@
                            <Font size="20.0" />
                         </font>
                      </Button>
-                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #6447D1; -fx-background-radius: 5;" text="Veiw Stored Time Slots" textFill="WHITE">
+
+                     <Button onAction="#handleTimeSlotViewer"
+                                   layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #6447D1; -fx-background-radius: 5;" text="Veiw Stored Time Slots" textFill="WHITE">
                         <font>
                            <Font size="18.0" />
                         </font></Button>

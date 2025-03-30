@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="s25.cs151.application.TimeSlotViewerController">
+    <TableView fx:id="timeSlotTable" layoutX="25" layoutY="25" prefWidth="400" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="fromTimeColumn" text="From Time"/>
+            <TableColumn fx:id="toTimeColumn" text="To Time"/>
+        </columns>
+    </TableView>
+    <Button text="Load Data" layoutX="160" layoutY="340" onAction="#loadData"/>
+</AnchorPane>

@@ -1,19 +1,41 @@
 package s25.cs151.application;
 
-public class TimeSlot {
-    private String fromTime;
-    private String toTime;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-    public TimeSlot(String fromHour, String toTime) {
-        this.fromTime = fromHour;
-        this.toTime = toTime;
+public class TimeSlot {
+
+    private final StringProperty fromTime;
+    private final StringProperty toTime;
+
+    public TimeSlot(String from, String to) {
+        this.fromTime = new SimpleStringProperty(from);
+        this.toTime = new SimpleStringProperty(to);
     }
 
-    // getters
-    public String getFromTime() { return fromTime; }
-    public String getToTime() { return toTime; }
+    // JavaFX property getters (used by TableColumn's cellValueFactory)
+    public StringProperty fromTimeProperty() {
+        return fromTime;
+    }
 
-    // setters
-    public void setFromHour(String fromHour) { this.fromTime = fromHour; }
-    public void setToTime(String toTime) { this.toTime = toTime; }
+    public StringProperty toTimeProperty() {
+        return toTime;
+    }
+
+    // Convenience getters/setters if you also need them
+    public String getFromTime() {
+        return fromTime.get();
+    }
+
+    public void setFromTime(String value) {
+        fromTime.set(value);
+    }
+
+    public String getToTime() {
+        return toTime.get();
+    }
+
+    public void setToTime(String value) {
+        toTime.set(value);
+    }
 }

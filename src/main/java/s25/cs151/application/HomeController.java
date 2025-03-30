@@ -40,5 +40,17 @@ public class HomeController {
             ex.printStackTrace();
         }
     }
+    @FXML
+    private void handleTimeSlotViewer(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/TimeSlotViewer.fxml"));
+            stage.setScene(new Scene(loader.load(), 600, 400));
+            stage.setTitle("ProfMeet - Stored Time Slots");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
 }
