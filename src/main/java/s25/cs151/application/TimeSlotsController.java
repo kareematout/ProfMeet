@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Comparator;
-import java.util.Scanner;
 
 public class TimeSlotsController extends NavigationController {
 

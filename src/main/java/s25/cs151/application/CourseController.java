@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 import java.io.*;
 import java.util.Scanner;
 
-public class CourseController {
+public class CourseController extends NavigationController{
 
     @FXML
     private TextField courseCodeField, courseNameField, sectionField;
@@ -109,37 +109,6 @@ public class CourseController {
                     courseList.add(course);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Show an error message
-    private void showErrorMessage(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    // Show a success message
-    private void showSuccessMessage(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    @FXML
-    private void goToHome() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CoursePage.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) courseCodeField.getScene().getWindow();
-            stage.setTitle("ProfMeet - Home");
-            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }

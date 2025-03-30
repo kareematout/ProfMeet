@@ -3,24 +3,19 @@ package s25.cs151.application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
 
-public class CourseViewerController {
+public class CourseViewerController extends NavigationController{
 
     @FXML
-    private TableView<Course> tableView;
+    private TableView<Course> courseTable;
 
     @FXML
     private TableColumn<Course, String> courseCodeColumn;
@@ -46,7 +41,7 @@ public class CourseViewerController {
         sortCoursesByCodeDescending();
 
         // Set items in TableView
-        tableView.setItems(coursesList);
+        courseTable.setItems(coursesList);
     }
 
     private void sortCoursesByCodeDescending() {
@@ -55,7 +50,7 @@ public class CourseViewerController {
     }
 
     private void loadCoursesFromCSV() {
-        File file = new File("data/Course.csv");
+        File file = new File("data/course_info.csv");
 
         if (!file.exists()) return;
 
@@ -75,19 +70,6 @@ public class CourseViewerController {
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void goToHome() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) tableView.getScene().getWindow();
-            stage.setTitle("ProfMeet - Home");
-            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
