@@ -24,6 +24,7 @@ public class HomeController {
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
+            stage.setTitle("ProfMeet - Stored Office Hours");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,7 +46,7 @@ public class HomeController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/TimeSlotViewer.fxml"));
-            stage.setScene(new Scene(loader.load(), 600, 400));
+            stage.setScene(new Scene(loader.load()));
             stage.setTitle("ProfMeet - Stored Time Slots");
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Comparator;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +19,7 @@ import java.util.stream.Stream;
  * that reads data from a CSV file in the data/ folder
  * and displays it in a TableView.
  */
-public class TimeSlotViewerController {
+public class TimeSlotViewerController extends NavigationController {
 
     @FXML
     private TableView<TimeSlot> timeSlotTable;
@@ -46,34 +49,33 @@ public class TimeSlotViewerController {
 
         // Assign the ObservableList to the table
         timeSlotTable.setItems(timeSlotList);
+        loadTimesFromCSV();
     }
 
     /**
      * Reads time slot data from data/time_slots.csv and populates the TableView.
-     * Triggered by a button in TimeSlotViewer.fxml with onAction="#loadData".
      */
-    @FXML
-    public void loadData() {
-        // Change the file path if necessary
-        String filePath = "data/time_slots.csv";
+    private void loadTimesFromCSV() {
+        File file = new File("data/time_slots.csv");
+        if (!file.exists()) return;
 
-        // Clear existing data in case the user clicks the button multiple times
-        timeSlotList.clear();
+        try (Scanner scanner = new Scanner(file)) {
+            if (scanner.hasNextLine()) scanner.nextLine();
 
-        try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
-            // Skip the header row if your CSV has a header
-            lines.skip(1)
-                    .map(line -> line.split(","))
-                    .filter(values -> values.length == 2) // Must have 2 columns
-                    .forEach(values -> {
-                        String fromTime = values[0].trim();
-                        String toTime = values[1].trim();
-                        timeSlotList.add(new TimeSlot(fromTime, toTime));
-                    });
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                if (data.length >= 2) {
+                    String fromTime = data[0];
+                    String toTime = data[1];
+                    TimeSlot timeslot = new TimeSlot(fromTime, toTime);
+                    timeSlotList.add(timeslot);
+                }
+            }
+
+            FXCollections.sort(timeSlotList, Comparator.comparing(TimeSlot::getFromTime));
 
         } catch (IOException e) {
             e.printStackTrace();
-            // You might want to display an alert dialog here
         }
     }
 }
