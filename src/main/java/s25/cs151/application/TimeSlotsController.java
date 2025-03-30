@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class TimeSlotsController extends NavigationController {
@@ -52,6 +53,9 @@ public class TimeSlotsController extends NavigationController {
         }
         TimeSlot timeSlot = new TimeSlot(fromTimeSlotComboBox.getValue(), toTimeSlotComboBox.getValue());
         timeSlots.add(timeSlot);
+
+        FXCollections.sort(timeSlots, Comparator.comparing(TimeSlot::getFromTime));
+
         saveTimeSlotsToCSV(timeSlot);
         showSuccessMessage("TimeSlots saved");
     }
@@ -81,7 +85,7 @@ public class TimeSlotsController extends NavigationController {
     }
 
     private void loadTimesFromCSV() {
-        File file = new File("data/timeslots.csv");
+        File file = new File("data/time_slots.csv");
         if (!file.exists()) return;
 
         try (Scanner scanner = new Scanner(file)) {
@@ -96,6 +100,9 @@ public class TimeSlotsController extends NavigationController {
                     timeSlots.add(timeslot);
                 }
             }
+
+            FXCollections.sort(timeSlots, Comparator.comparing(TimeSlot::getFromTime));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
