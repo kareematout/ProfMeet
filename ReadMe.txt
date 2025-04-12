@@ -1,11 +1,11 @@
 # Name of application: ProfMeet
-# Version: 0.5
+# Version: 0.6
 
 # who did what:
-1. Lydia Essombe-Mpacko - Define Courses Page
-2. Kareem Atout - Define Semester's Time Slots Page
-3. Anita Huang - Courses Table
-4. Kyle Chu - Time Slots Table
+1. Lydia Essombe-Mpacko - Schedule Controller
+2. Kareem Atout - 
+3. Anita Huang - 
+4. Kyle Chu - 
 
 
 # Any other instruction that users need to know:
