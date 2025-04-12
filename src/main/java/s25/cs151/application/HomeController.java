@@ -19,56 +19,44 @@ public class HomeController {
 
     @FXML
     private void handleViewStoredOfficeHours(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/OfficeHoursPage.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        handleSceneSwitch(event, "/s25/cs151/application/OfficeHoursPage.fxml", "ProfMeet - Stored Office Hours");
     }
 
     @FXML
     private void handleTimeSlots(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("TimeSlotsPage.fxml"));
-            stage.setScene(new Scene(loader.load(), 1000, 600));
-            stage.setTitle("ProfMeet - Time Slots");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        handleSceneSwitch(event, "/s25/cs151/application/TimeSlotsPage.fxml", "ProfMeet - Time Slots");
     }
 
     @FXML
     private void handleTimeSlotViewer(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/TimeSlotViewer.fxml"));
-            stage.setScene(new Scene(loader.load()));
-            stage.setTitle("ProfMeet - Stored Time Slots");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        handleSceneSwitch(event, "/s25/cs151/application/TimeSlotViewer.fxml", "ProfMeet - Stored Time Slots");
     }
 
     @FXML
     private void handleCourseViewer(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/s25/cs151/application/CourseViewer.fxml"));
-            stage.setScene(new Scene(loader.load()));
-            stage.setTitle("ProfMeet - Stored Courses");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        handleSceneSwitch(event, "/s25/cs151/application/CourseViewer.fxml", "ProfMeet - Stored Courses");
     }
 
     @FXML
-    private void goToCoursePage(ActionEvent event) {
+    private void handleCourses(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene coursePageScene = Main.coursePageScene(stage);
         stage.setScene(coursePageScene);
+    }
+
+    @FXML
+    private void handleOfficeHoursSchedule(ActionEvent event) {
+        handleSceneSwitch(event, "/s25/cs151/application/OfficeHoursSchedulePage.fxml", "ProfMeet - Office Hours Schedule");
+    }
+
+    private void handleSceneSwitch(ActionEvent event, String fxmlPath, String windowTitle) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle(windowTitle);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

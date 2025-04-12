@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class OfficeHoursScheduleController extends NavigationController {
 
-    @FXML private TextField studentNameField, reasonField, commentField;
+    @FXML private TextField studentNameField;
+    @FXML private TextArea reasonField, commentField;
     @FXML private DatePicker scheduleDatePicker;
     @FXML private ComboBox<String> timeSlotComboBox, courseComboBox;
 

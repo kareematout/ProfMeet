@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.OfficeHoursScheduleController">
+   <children>
+      <Label layoutX="305.0" layoutY="14.0" prefHeight="50.0" prefWidth="390.0" text="Schedule Office Hours" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="48.0" layoutY="69.0" prefHeight="500.0" prefWidth="409.0" style="-fx-background-color: rgba(100, 0, 100, 0.05); -fx-background-radius: 50px;">
+         <children>
+            <VBox layoutX="39.0" layoutY="373.0" prefHeight="92.0" prefWidth="312.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course *">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="courseComboBox" prefHeight="49.0" prefWidth="312.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-border-color: #E0E0E0;" />
+               </children>
+            </VBox>
+            <VBox layoutX="39.0" layoutY="41.0" prefHeight="92.0" prefWidth="312.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Full Name *">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="studentNameField" prefHeight="49.0" prefWidth="312.0" promptText="e.g., John Doe" style="-fx-background-radius: 5;" />
+               </children>
+            </VBox>
+            <VBox layoutX="39.0" layoutY="264.0" prefHeight="92.0" prefWidth="312.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Slot *">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="timeSlotComboBox" prefHeight="49.0" prefWidth="312.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-border-color: #E0E0E0;" />
+               </children>
+            </VBox>
+            <VBox layoutX="39.0" layoutY="158.0" prefHeight="92.0" prefWidth="312.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule Date *">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <DatePicker fx:id="scheduleDatePicker" prefHeight="49.0" prefWidth="312.0" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="508.0" layoutY="69.0" prefHeight="403.0" prefWidth="444.0" style="-fx-background-color: rgba(100, 0, 100, 0.05); -fx-background-radius: 50px;">
+         <children>
+            <VBox layoutX="22.0" layoutY="194.0" prefHeight="181.0" prefWidth="390.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comments">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="commentField" prefHeight="160.0" prefWidth="388.0" promptText="Additional notes or comments about the meeting" style="-fx-wrap-text: true;">
+                     <font>
+                        <Font size="20.0" />
+                     </font></TextArea>
+               </children>
+            </VBox>
+            <VBox layoutX="22.0" layoutY="22.0" prefHeight="164.0" prefWidth="390.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reason">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="reasonField" prefHeight="122.0" prefWidth="393.0" promptText="e.g., Assignment help, Project questions" style="-fx-wrap-text: true;">
+                     <font>
+                        <Font size="20.0" />
+                     </font></TextArea>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Button layoutX="574.0" layoutY="493.0" mnemonicParsing="false" onAction="#submitSchedule" prefHeight="59.0" prefWidth="156.0" style="-fx-background-color: #6C47FF;" text="Submit" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="799.0" layoutY="504.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="36.0" prefWidth="70.0" style="-fx-background-color: #6C47FF;" text="Home" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
