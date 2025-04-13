@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="s25.cs151.application.OfficeHoursScheduleViewerController"
-            prefWidth="1000" prefHeight="600">
+<AnchorPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.OfficeHoursScheduleViewerController">
 
     <children>
-        <VBox layoutX="50" layoutY="30" prefWidth="900" prefHeight="540" spacing="10">
+        <VBox layoutX="50" layoutY="30" prefHeight="540" prefWidth="900" spacing="10">
             <children>
-                <Label text="Office Hour Schedule Table" style="-fx-font-size: 26px; -fx-font-weight: bold;" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                      <Label style="-fx-font-size: 26px; -fx-font-weight: bold;" text="Office Hour Schedule Table" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: #6C47FF;" text="Home" textFill="WHITE" onAction="#goToHome">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
                 <TableView fx:id="scheduleTable" prefHeight="500">
                     <columns>
-                        <TableColumn fx:id="nameCol" text="Student Name" prefWidth="150"/>
-                        <TableColumn fx:id="dateCol" text="Schedule Date" prefWidth="120"/>
-                        <TableColumn fx:id="slotCol" text="Time Slot" prefWidth="150"/>
-                        <TableColumn fx:id="courseCol" text="Course" prefWidth="120"/>
-                        <TableColumn fx:id="reasonCol" text="Reason" prefWidth="200"/>
-                        <TableColumn fx:id="commentCol" text="Comment" prefWidth="200"/>
+                        <TableColumn fx:id="nameCol" prefWidth="150" text="Student Name" />
+                        <TableColumn fx:id="dateCol" prefWidth="120" text="Schedule Date" />
+                        <TableColumn fx:id="slotCol" prefWidth="150" text="Time Slot" />
+                        <TableColumn fx:id="courseCol" prefWidth="120" text="Course" />
+                        <TableColumn fx:id="reasonCol" prefWidth="200" text="Reason" />
+                        <TableColumn fx:id="commentCol" prefWidth="200" text="Comment" />
                     </columns>
                 </TableView>
             </children>
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
         </VBox>
     </children>

@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class OfficeHoursScheduleViewerController {
+public class OfficeHoursScheduleViewerController extends NavigationController{
 
     @FXML private TableView<OfficeHourEntry> scheduleTable;
     @FXML private TableColumn<OfficeHourEntry, String> nameCol;
