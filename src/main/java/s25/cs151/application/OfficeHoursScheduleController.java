@@ -6,6 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class OfficeHoursScheduleController extends NavigationController {
@@ -98,19 +103,29 @@ public class OfficeHoursScheduleController extends NavigationController {
         if (!file.exists()) return;
 
         try (Scanner scanner = new Scanner(file)) {
-            if (scanner.hasNextLine()) scanner.nextLine();  // Skip the header line
+            if (scanner.hasNextLine()) scanner.nextLine(); // Skip the header
+
+            List<String[]> slotList = new ArrayList<>();
 
             while (scanner.hasNextLine()) {
                 String[] data = scanner.nextLine().split(",");
                 if (data.length >= 2) {
-                    String fromTime = data[0];
-                    String toTime = data[1];
-                    String timeSlot = fromTime + " - " + toTime;
-                    timeSlots.add(timeSlot);
+                    slotList.add(new String[]{data[0].trim(), data[1].trim()});
                 }
             }
+
+            // Sort by fromTime
+            slotList.sort(Comparator.comparing(slot -> LocalTime.parse(slot[0])));
+
+            // Clear and add to observable list
+            timeSlots.clear();
+            for (String[] slot : slotList) {
+                timeSlots.add(slot[0] + " - " + slot[1]);
+            }
+
             timeSlotComboBox.setItems(timeSlots);
-        } catch (IOException e) {
+
+        } catch (IOException | DateTimeParseException e) {
             e.printStackTrace();
             showErrorMessage("Failed to load time slots: " + e.getMessage());
         }
