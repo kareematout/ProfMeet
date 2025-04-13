@@ -44,7 +44,7 @@
             <VBox spacing="10">
                <children>
                   <Button onAction="#handleOfficeHoursSchedule" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #682FCC; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="Schedule Office Hours" />
-                  <Button prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #682FCC; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="View Stored Office Hours Schedules" />
+                  <Button onAction="#handleOfficeHoursScheduleViewer" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #682FCC; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="View Stored Office Hours Schedules" />
                </children>
             </VBox>
             </HBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="s25.cs151.application.OfficeHoursScheduleViewerController"
+            prefWidth="1000" prefHeight="600">
+
+    <children>
+        <VBox layoutX="50" layoutY="30" prefWidth="900" prefHeight="540" spacing="10">
+            <children>
+                <Label text="Office Hour Schedule Table" style="-fx-font-size: 26px; -fx-font-weight: bold;" />
+                <TableView fx:id="scheduleTable" prefHeight="500">
+                    <columns>
+                        <TableColumn fx:id="nameCol" text="Student Name" prefWidth="150"/>
+                        <TableColumn fx:id="dateCol" text="Schedule Date" prefWidth="120"/>
+                        <TableColumn fx:id="slotCol" text="Time Slot" prefWidth="150"/>
+                        <TableColumn fx:id="courseCol" text="Course" prefWidth="120"/>
+                        <TableColumn fx:id="reasonCol" text="Reason" prefWidth="200"/>
+                        <TableColumn fx:id="commentCol" text="Comment" prefWidth="200"/>
+                    </columns>
+                </TableView>
+            </children>
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

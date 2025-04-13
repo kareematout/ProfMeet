@@ -1,10 +1,16 @@
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/module-info.java
+/Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/Course.java
+/Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/CourseController.java
+/Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/CourseViewerController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/DisplayOfficeHoursController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/HomeController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/Main.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/MainController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/NavigationController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/OfficeHour.java
+/Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/OfficeHourEntry.java
+/Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/OfficeHoursScheduleController.java
+/Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/OfficeHoursScheduleViewerController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/TimeSlot.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/TimeSlotViewerController.java
 /Users/kylechu/Documents/CS151/ProfMeetCurent/src/main/java/s25/cs151/application/TimeSlotsController.java
