@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -53,11 +54,14 @@ public class SearchOfficeHoursScheduleController extends NavigationController {
                 }
             }
 
-            // Sort by date then start time
+            // Sort by date (descending) then time slot (descending)
             scheduleList.sort((a, b) -> {
-                int dateComparison = a.getParsedDate().compareTo(b.getParsedDate());
+                // First, compare by the schedule date in descending order
+                int dateComparison = b.getParsedDate().compareTo(a.getParsedDate()); // Descending order
                 if (dateComparison != 0) return dateComparison;
-                return a.getStartTime().compareTo(b.getStartTime());
+
+                // If dates are the same, compare by start time in descending order
+                return b.getStartTime().compareTo(a.getStartTime()); // Descending order
             });
 
         } catch (IOException e) {
@@ -102,7 +106,7 @@ public class SearchOfficeHoursScheduleController extends NavigationController {
         String keyword = searchField.getText().toLowerCase().trim();
 
         if (keyword.isEmpty()) {
-            scheduleTable.setItems(scheduleList);
+            scheduleTable.setItems(scheduleList); // Reset the table if search field is empty
             return;
         }
 
@@ -113,6 +117,6 @@ public class SearchOfficeHoursScheduleController extends NavigationController {
             }
         }
 
-        scheduleTable.setItems(filteredList);
+        scheduleTable.setItems(filteredList); // Update the table with filtered items
     }
 }
