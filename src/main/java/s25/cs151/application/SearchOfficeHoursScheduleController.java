@@ -1,5 +1,12 @@
 package s25.cs151.application;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Comparator;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,48 +14,33 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.Comparator;
 
 public class SearchOfficeHoursScheduleController extends NavigationController {
 
-    @FXML
-    private TextField searchField;
+    @FXML private TableView<OfficeHourEntry> scheduleTable;
+    @FXML private TableColumn<OfficeHourEntry, String> nameCol;
+    @FXML private TableColumn<OfficeHourEntry, String> dateCol;
+    @FXML private TableColumn<OfficeHourEntry, String> slotCol;
+    @FXML private TableColumn<OfficeHourEntry, String> courseCol;
+    @FXML private TableColumn<OfficeHourEntry, String> reasonCol;
+    @FXML private TableColumn<OfficeHourEntry, String> commentCol;
+    @FXML private TextField searchField;
+    @FXML private Button deleteButton;
 
-    @FXML
-    private TableView<OfficeHourEntry> scheduleTable;
-
-    @FXML
-    private Button deleteButton;
-
-    @FXML
-    private TableColumn<OfficeHourEntry, String> nameCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> dateCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> slotCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> courseCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> reasonCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> commentCol;
-
-    private ObservableList<OfficeHourEntry> masterData = FXCollections.observableArrayList();
+    private final ObservableList<OfficeHourEntry> masterData = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
-        // Set up column
-        nameCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getStudentName()));
-        dateCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getScheduleDate()));
-        slotCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getTimeSlot()));
-        courseCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getCourse()));
-        reasonCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getReason()));
-        commentCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getComment()));
+        nameCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getStudentName()));
+        dateCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getScheduleDate()));
+        slotCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getTimeSlot()));
+        courseCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getCourse()));
+        reasonCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getReason()));
+        commentCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getComment()));
+
         loadScheduleData();
-        System.out.println("Loaded entries: " + masterData.size());
+        scheduleTable.setItems(masterData);
+
         searchField.setOnAction(event -> handleSearch());
     }
 
@@ -81,24 +73,17 @@ public class SearchOfficeHoursScheduleController extends NavigationController {
                 }
             }
 
-            // Sort masterData by date, then name
-            masterData.sort(Comparator
-                    .comparing(OfficeHourEntry::getParsedDate) // first by date
-                    .thenComparing(entry -> entry.getStudentName().toLowerCase()) // then by name ignoring case
-            );
+            masterData.sort((a, b) -> {
+                int dateCompare = b.getParsedDate().compareTo(a.getParsedDate());
+                if (dateCompare != 0) return dateCompare;
 
-
-            scheduleTable.setItems(masterData);
-            System.out.println("Loaded entries: " + masterData.size());
+                return b.getStartTime().compareTo(a.getStartTime());
+            });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-
-
 
     @FXML
     private void handleSearch() {
@@ -122,42 +107,37 @@ public class SearchOfficeHoursScheduleController extends NavigationController {
 
     @FXML
     private void handleDelete() {
-        OfficeHourEntry selected = scheduleTable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            masterData.remove(selected);
-            scheduleTable.setItems(masterData); // Refresh table view
-            saveScheduleData(); // Save changes permanently
-        } else {
-            System.out.println("No entry selected for deletion.");
+        OfficeHourEntry selectedEntry = scheduleTable.getSelectionModel().getSelectedItem();
+        if (selectedEntry == null) {
+            System.out.println("Please select an entry to delete.");
+            return;
         }
+
+        masterData.remove(selectedEntry);
+        scheduleTable.setItems(masterData); // Refresh table view
+        saveScheduleData();
+        System.out.println("Schedule successfully deleted.");
     }
 
     private void saveScheduleData() {
         File file = new File("data/office_hour_schedule.csv");
 
-        try (java.io.PrintWriter writer = new java.io.PrintWriter(file)) {
-            // Write header first
-            writer.println("Student Name,Schedule Date,Time Slot,Course,Reason,Comment");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write("Student Name,Schedule Date,Time Slot,Course,Reason,Comment\n");
 
-            // Write each entry
             for (OfficeHourEntry entry : masterData) {
-                writer.printf("%s,%s,%s,%s,%s,%s\n",
-                        entry.getStudentName(),
-                        entry.getScheduleDate(),
-                        entry.getTimeSlot(),
-                        entry.getCourse(),
-                        entry.getReason(),
-                        entry.getComment()
-                );
+                writer.write(entry.getStudentName() + "," +
+                        entry.getScheduleDate() + "," +
+                        entry.getTimeSlot() + "," +
+                        entry.getCourse() + "," +
+                        entry.getReason() + "," +
+                        entry.getComment() + "\n");
             }
 
             System.out.println("Saved updated schedule to CSV!");
-
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Failed to save updated schedule: " + e.getMessage());
         }
     }
-
-
-
 }
