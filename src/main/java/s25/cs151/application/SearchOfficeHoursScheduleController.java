@@ -1,202 +1,118 @@
 package s25.cs151.application;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import javafx.stage.Stage;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
-public class Main extends Application {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+public class SearchOfficeHoursScheduleController extends NavigationController {
 
-        stage.setTitle("ProfMeet - Home");
-        stage.setScene(scene);
-        stage.show();
+    @FXML private TableView<OfficeHourEntry> scheduleTable;
+    @FXML private TableColumn<OfficeHourEntry, String> nameCol;
+    @FXML private TableColumn<OfficeHourEntry, String> dateCol;
+    @FXML private TableColumn<OfficeHourEntry, String> slotCol;
+    @FXML private TableColumn<OfficeHourEntry, String> courseCol;
+    @FXML private TableColumn<OfficeHourEntry, String> reasonCol;
+    @FXML private TableColumn<OfficeHourEntry, String> commentCol;
+    @FXML private TextField searchField;
+
+    private final ObservableList<OfficeHourEntry> scheduleList = FXCollections.observableArrayList();
+
+    @FXML
+    public void initialize() {
+        nameCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getStudentName()));
+        dateCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getScheduleDate()));
+        slotCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getTimeSlot()));
+        courseCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getCourse()));
+        reasonCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getReason()));
+        commentCol.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getComment()));
+
+        loadCSVData();
+        scheduleTable.setItems(scheduleList);
     }
 
-    public static Scene OfficeHoursScene(Stage stage) {
-        Label header = new Label("Create Office\nHours");
-        header.setStyle("-fx-font-weight: bold; -fx-font-size: 50px;");
+    private void loadCSVData() {
+        File file = new File("data/office_hour_schedule.csv");
+        if (!file.exists()) return;
 
-        // Create the email input HBoxes
-        HBox profEmail = CreateEmailHBox("Professor Email:", "professor@sjsu.edu");
-        HBox stuEmail = CreateEmailHBox("Student Email:", "student@sjsu.edu");
+        try (Scanner scanner = new Scanner(file)) {
+            if (scanner.hasNextLine()) scanner.nextLine(); // Skip header
 
-        // Organize emails into a VBox
-        VBox emails = new VBox(profEmail, stuEmail);
-        emails.setSpacing(5);
-        emails.setMaxWidth(300);
-
-        // Create a form (assuming this method exists to build the form UI elements)
-        VBox form = CreateFormVBox();
-
-        // Info panel with header and email section
-        VBox infoPanel = new VBox(header, emails);
-        infoPanel.setStyle("-fx-padding: 100 0 0 120;");
-        infoPanel.setSpacing(50);
-
-        // Back to Home Button
-        Button homeButton = new Button("Home");
-        homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white;");
-        homeButton.setOnAction(e -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
-                stage.setScene(new Scene(loader.load(), 1000, 600));
-                stage.setTitle("ProfMeet - Home");
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            while (scanner.hasNextLine()) {
+                String[] row = scanner.nextLine().split(",", -1);
+                if (row.length >= 6) {
+                    scheduleList.add(new OfficeHourEntry(row[0], row[1], row[2], row[3], row[4], row[5]));
+                }
             }
-        });
 
-        // Add the home button to the info panel
-        infoPanel.getChildren().add(homeButton);
-
-        // Layout for the scene (info panel + form)
-        HBox layout = new HBox(infoPanel, form);
-        layout.setSpacing(50);
-
-        // Return the scene with the layout
-        return new Scene(layout, 1000, 600);
-    }
-
-    public static Scene coursePageScene(Stage stage) {
-        Label header = new Label("Add Course");
-        header.setStyle("-fx-font-weight: bold; -fx-font-size: 50px;");
-
-        // Create the email input HBoxes
-        HBox profEmail = CreateEmailHBox("Professor Email:", "professor@sjsu.edu");
-        HBox stuEmail = CreateEmailHBox("Student Email:", "student@sjsu.edu");
-
-        // Organize emails into a VBox
-        VBox emails = new VBox(profEmail, stuEmail);
-        emails.setSpacing(5);
-        emails.setMaxWidth(300);
-
-        // Create a form (assuming this method exists to build the form UI elements)
-        VBox form = CreateCourseFormVBox();
-
-        // Info panel with header and email section
-        VBox infoPanel = new VBox(header, emails);
-        infoPanel.setStyle("-fx-padding: 100 0 0 120;");
-        infoPanel.setSpacing(50);
-
-        // Back to Home Button
-        Button homeButton = new Button("Home");
-        homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white;");
-        homeButton.setOnAction(e -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
-                stage.setScene(new Scene(loader.load(), 1000, 600));
-                stage.setTitle("ProfMeet - Home");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        // Add the home button to the info panel
-        infoPanel.getChildren().add(homeButton);
-
-        // Layout for the scene (info panel + form)
-        HBox layout = new HBox(infoPanel, form);
-        layout.setSpacing(50);
-
-        // Return the scene with the layout
-        return new Scene(layout, 1000, 600);
-    }
-
-
-
-    private static HBox CreateEmailHBox(String label, String email) {
-        Text labelText = new Text(label + "\n");
-        Text emailText = new Text(email);
-        emailText.setStyle("-fx-font-weight: bold; -fx-font-size: 20px;");
-
-        TextFlow emailFlow = new TextFlow(labelText, emailText);
-        emailFlow.setPrefWidth(350);
-
-        ImageView emailIcon = new ImageView(new Image(
-                Main.class.getResourceAsStream("/images/email-icon.png"),
-                40,
-                40,
-                true,
-                true));
-
-        HBox layout = new HBox(emailIcon, emailFlow);
-        layout.setSpacing(15);
-
-        String emailStyle =
-                "-fx-font-size: 15px;" +
-                        " -fx-background-color: rgba(100, 0, 100, 0.05);" +
-                        " -fx-padding: 20 20 20 20px;" +
-                        " -fx-background-radius: 20px;";
-
-        layout.setStyle(emailStyle);
-
-        return layout;
-    }
-
-    private static VBox CreateFormVBox() {
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
-            VBox dropdownContent = loader.load();
-            VBox layout = new VBox();
-            layout.setStyle(dropdownContent.getStyle());
-            layout.setSpacing(dropdownContent.getSpacing());
-            layout.setAlignment(dropdownContent.getAlignment());
-            layout.getChildren().addAll(dropdownContent.getChildren());
-            return layout;
-        } catch (IOException e) {
-            // Handle the exception
-            e.printStackTrace();
-            return new VBox(new Label("Error loading form"));
-        }
-
-    }
-
-    private static VBox CreateCourseFormVBox() {
-        try {
-            // Load the FXML for the course page form
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("CoursePage.fxml"));
-
-            // Load the FXML content into a VBox (root node of the FXML)
-            VBox dropdownContent = loader.load();
-
-            // Create a new VBox to apply the layout properties from the loaded FXML
-            VBox layout = new VBox();
-            layout.setStyle(dropdownContent.getStyle());
-            layout.setSpacing(dropdownContent.getSpacing());
-            layout.setAlignment(dropdownContent.getAlignment());
-
-            // Add all the children nodes from the loaded FXML into the new VBox
-            layout.getChildren().addAll(dropdownContent.getChildren());
-
-            // Return the new VBox
-            return layout;
+            // Sort by date then start time
+            scheduleList.sort((a, b) -> {
+                int dateComparison = a.getParsedDate().compareTo(b.getParsedDate());
+                if (dateComparison != 0) return dateComparison;
+                return a.getStartTime().compareTo(b.getStartTime());
+            });
 
         } catch (IOException e) {
-            // Handle any errors that occur during loading
             e.printStackTrace();
-
-            // If an error occurs, return a VBox with an error message
-            return new VBox(new Label("Error loading form"));
         }
     }
 
+    @FXML
+    private void handleDeleteSchedule() {
+        OfficeHourEntry selectedEntry = scheduleTable.getSelectionModel().getSelectedItem();
+        if (selectedEntry == null) {
+            showErrorMessage("Please select an entry to delete.");
+            return;
+        }
 
-    public static void main(String[] args) {
-        launch();
+        scheduleList.remove(selectedEntry);
+        saveCSVData();
+        showSuccessMessage("Schedule successfully deleted.");
+    }
+
+    private void saveCSVData() {
+        File file = new File("data/office_hour_schedule.csv");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write("Student Name,Schedule Date,Time Slot,Course,Reason,Comment\n");
+            for (OfficeHourEntry entry : scheduleList) {
+                writer.write(entry.getStudentName() + "," +
+                        entry.getScheduleDate() + "," +
+                        entry.getTimeSlot() + "," +
+                        entry.getCourse() + "," +
+                        entry.getReason() + "," +
+                        entry.getComment() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Failed to save updated schedule: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleSearch() {
+        String keyword = searchField.getText().toLowerCase().trim();
+
+        if (keyword.isEmpty()) {
+            scheduleTable.setItems(scheduleList);
+            return;
+        }
+
+        ObservableList<OfficeHourEntry> filteredList = FXCollections.observableArrayList();
+        for (OfficeHourEntry entry : scheduleList) {
+            if (entry.getStudentName().toLowerCase().contains(keyword)) {
+                filteredList.add(entry);
+            }
+        }
+
+        scheduleTable.setItems(filteredList);
     }
 }
