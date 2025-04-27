@@ -1,11 +1,11 @@
 # Name of application: ProfMeet
-# Version: 0.6
+# Version: 0.7
 
 # who did what:
-1. Lydia Essombe-Mpacko - Schedule Controller
-2. Kareem Atout - 
-3. Anita Huang - 
-4. Kyle Chu - 
+1. Lydia Essombe-Mpacko - Search Function and File cleanup
+2. Kareem Atout - Delete Function and Populate Product
+3. Anita Huang - Table Display and Sort
+4. Kyle Chu - Search Page UI and Navigation
 
 
 # Any other instruction that users need to know:
