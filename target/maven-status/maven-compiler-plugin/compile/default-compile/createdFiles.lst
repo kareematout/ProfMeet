@@ -10,6 +10,7 @@ module-info.class
 s25/cs151/application/CourseController.class
 s25/cs151/application/HomeController.class
 s25/cs151/application/OfficeHoursScheduleController.class
+s25/cs151/application/SearchOfficeHoursScheduleController.class
 s25/cs151/application/CourseViewerController.class
 s25/cs151/application/Main.class
 s25/cs151/application/OfficeHour.class
