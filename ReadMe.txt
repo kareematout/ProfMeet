@@ -9,6 +9,17 @@
 
 
 # Any other instruction that users need to know:
-Polymorphism Used: We used polymorphism through the abstract class NavigationController, which is extended by ten concrete controller classes: CourseController, CourseViewerController, DisplayOfficeHoursController, EditOfficeHoursPageController, MainController, OfficeHoursScheduleController, OfficeHoursScheduleViewerController, SearchOfficeHoursScheduleController, TimeSlotsController, and TimeSlotViewerController.
-
+Polymorphism Used:
+- Abstract parent class: NavigationController
+- Concrete child classes that extend it:
+    - CourseController
+    - CourseViewerController
+    - DisplayOfficeHoursController
+    - EditOfficeHoursPageController
+    - MainController
+    - OfficeHoursScheduleController
+    - OfficeHoursScheduleViewerController
+    - SearchOfficeHoursScheduleController
+    - TimeSlotsController
+    - TimeSlotViewerController
 
