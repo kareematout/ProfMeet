@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="s25.cs151.application.EditOfficeHoursController">
+    <Label text="Edit Office Hours Schedule" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="searchField" promptText="Search by Student Name" maxWidth="300" />
+
+    <TableView fx:id="scheduleTable" prefHeight="400" prefWidth="800">
+        <columns>
+            <TableColumn fx:id="nameCol" text="Student Name" prefWidth="130" />
+            <TableColumn fx:id="dateCol" text="Schedule Date" prefWidth="120" />
+            <TableColumn fx:id="slotCol" text="Time Slot" prefWidth="120" />
+            <TableColumn fx:id="courseCol" text="Course" prefWidth="100" />
+            <TableColumn fx:id="reasonCol" text="Reason" prefWidth="150" />
+            <TableColumn fx:id="commentCol" text="Comment" prefWidth="180" />
+        </columns>
+    </TableView>
+
+    <Button fx:id="editButton" text="Edit Selected Schedule" onAction="#handleEdit" />
+</VBox>
