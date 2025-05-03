@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class NavigationController {
+public abstract class NavigationController {
     @FXML
     protected void goToHome(ActionEvent event) {
         try {
