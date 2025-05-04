@@ -1,14 +1,10 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package s25.cs151.application.Controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Scanner;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+import java.util.*;
 import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
-import s25.cs151.application.EditScheduleForm;
 import s25.cs151.application.Model.OfficeHourEntry;
 
 public class EditOfficeHoursController extends NavigationController {
@@ -30,13 +25,12 @@ public class EditOfficeHoursController extends NavigationController {
     @FXML private TableView<OfficeHourEntry> scheduleTable;
     @FXML private TableColumn<OfficeHourEntry, String> nameCol, dateCol, slotCol, courseCol, reasonCol, commentCol;
     @FXML private StackPane editForm = new StackPane();
-    @FXML private Button editButton;
+    @FXML private Label editFormLabel;
 
     private final ObservableList<OfficeHourEntry> fullList = FXCollections.observableArrayList();
     private final ObservableList<OfficeHourEntry> filteredList = FXCollections.observableArrayList();
-
-    public EditOfficeHoursController() {
-    }
+    private final ObservableList<String> timeSlots = FXCollections.observableArrayList();
+    private final ObservableList<String> courses = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -47,6 +41,8 @@ public class EditOfficeHoursController extends NavigationController {
         this.reasonCol.setCellValueFactory((cell) -> new SimpleStringProperty(((OfficeHourEntry)cell.getValue()).getReason()));
         this.commentCol.setCellValueFactory((cell) -> new SimpleStringProperty(((OfficeHourEntry)cell.getValue()).getComment()));
         this.loadCSVData();
+        this.loadCoursesFromCSV();
+        this.loadTimeSlotsFromCSV();
         this.scheduleTable.setItems(this.filteredList);
         this.searchField.addEventHandler(KeyEvent.KEY_RELEASED, (event) -> this.handleSearch());
     }
@@ -122,19 +118,85 @@ public class EditOfficeHoursController extends NavigationController {
         OfficeHourEntry selected = (OfficeHourEntry)this.scheduleTable.getSelectionModel().getSelectedItem();
         if (selected == null) {
             this.showErrorMessage("Please select a schedule to edit.");
-        } else {
-            toggleFormVisibility();
-            // EditScheduleForm.show(selected, this.fullList, this.filteredList);
+            return;
         }
+        toggleVisibility(editForm);
+        studentNameField.setText(selected.getStudentName());
+        reasonField.setText(selected.getReason());
+        commentField.setText(selected.getComment());
+        timeSlotComboBox.setValue(selected.getTimeSlot());
+        courseComboBox.setValue(selected.getCourse());
+        scheduleDatePicker.setValue(selected.getParsedDate());
+
+        editFormLabel.setText("Editing " + selected.getStudentName() + "'s Office Hours Schedule");
+
     }
 
     @FXML
     private void handleSaveEdit() {
-        toggleFormVisibility();
+        toggleVisibility(editForm);
+        // TODO: save items
     }
 
     @FXML
-    private void toggleFormVisibility() {
-        editForm.setVisible(!editForm.isVisible());
+    private void toggleVisibility(Node node) {
+        node.setVisible(!node.isVisible());
     }
+
+    private void loadTimeSlotsFromCSV() {
+        File file = new File("data/time_slots.csv");
+        if (!file.exists()) return;
+
+        try (Scanner scanner = new Scanner(file)) {
+            if (scanner.hasNextLine()) scanner.nextLine(); // Skip the header
+
+            List<String[]> slotList = new ArrayList<>();
+
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                if (data.length >= 2) {
+                    slotList.add(new String[]{data[0].trim(), data[1].trim()});
+                }
+            }
+
+            // Sort by start time
+            slotList.sort(Comparator.comparing(slot -> LocalTime.parse(slot[0])));
+
+            timeSlots.clear();
+            for (String[] slot : slotList) {
+                timeSlots.add(slot[0] + " - " + slot[1]);
+            }
+
+            timeSlotComboBox.setItems(timeSlots);
+
+        } catch (IOException | DateTimeParseException e) {
+            e.printStackTrace();
+            showErrorMessage("Failed to load time slots: " + e.getMessage());
+        }
+    }
+
+    private void loadCoursesFromCSV() {
+        File file = new File("data/course_info.csv");
+        if (!file.exists()) return;
+
+        try (Scanner scanner = new Scanner(file)) {
+            if (scanner.hasNextLine()) scanner.nextLine();  // Skip header
+
+            courses.clear();
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                if (data.length >= 3) {
+                    String course = data[0] + "-" + data[2];  // Course Code - Section
+                    courses.add(course);
+                }
+            }
+
+            courseComboBox.setItems(courses);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Failed to load courses: " + e.getMessage());
+        }
+    }
+
 }

@@ -52,7 +52,7 @@
                             </font>
                         </TextField>
 
-                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEdit" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="Edit" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#handleEdit" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="Edit" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -99,7 +99,7 @@
                     <children>
                         <VBox prefHeight="578.0" prefWidth="875.0">
                             <children>
-                                <Label prefHeight="51.0" prefWidth="858.0" text="Editing &lt;placeholder&gt;'s Office Hours">
+                                <Label fx:id="editFormLabel" prefHeight="51.0" prefWidth="858.0" text="Editing &lt;placeholder&gt;'s Office Hours Schedule">
                                     <font>
                                         <Font name="System Bold" size="22.0" />
                                     </font>
@@ -193,7 +193,7 @@
                                                         <TextArea fx:id="reasonField" prefHeight="61.0" prefWidth="239.0" promptText="e.g., Assignment help, Project questions" style="-fx-wrap-text: true;" />
                                                     </children>
                                                 </VBox>
-                                                <Button layoutX="101.0" layoutY="211.0" mnemonicParsing="false" onAction="#toggleFormVisibility" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: #6C47FF;" text="Save" textFill="WHITE">
+                                                <Button layoutX="101.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleSaveEdit" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: #6C47FF;" text="Save" textFill="WHITE">
                                                     <font>
                                                         <Font name="System Bold" size="12.0" />
                                                     </font>
