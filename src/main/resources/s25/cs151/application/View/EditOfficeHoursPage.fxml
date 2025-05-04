@@ -99,7 +99,7 @@
                     <children>
                         <VBox prefHeight="578.0" prefWidth="875.0">
                             <children>
-                                <Label fx:id="editFormLabel" prefHeight="51.0" prefWidth="858.0" text="Editing &lt;placeholder&gt;'s Office Hours Schedule">
+                                <Label fx:id="editFormLabel" prefHeight="51.0" prefWidth="858.0">
                                     <font>
                                         <Font name="System Bold" size="22.0" />
                                     </font>

@@ -107,11 +107,12 @@ public class EditOfficeHoursController extends NavigationController {
         reasonField.setText(selected.getReason());
         commentField.setText(selected.getComment());
 
+        toggleVisibility(editForm);
         if (editFormLabel != null) {
             editFormLabel.setText("Editing " + selected.getStudentName() + "'s Office Hours Schedule");
         }
 
-        toggleVisibility(editForm);
+
     }
 
     @FXML
