@@ -1,87 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controller.EditOfficeHoursPageController">
-    <children>
-        <Label layoutX="49.0" prefHeight="105.0" prefWidth="618.0" style="-fx-wrap-text: true;" text="Edit Office Hours Schedule" textAlignment="CENTER">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.HomeController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: #6C47FF;">
+            <Label text="ProfMeet" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="32.0" />
+                </font>
+            </Label>
+            <Button onAction="#handleOfficeHours" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Office Hours" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" prefHeight="469.0" prefWidth="1000.0" spacing="40.0" style="-fx-padding: 30;">
+            <Label style="-fx-font-size: 32px; -fx-font-weight: bold;" text="Welcome to ProfMeet" />
+            <Label style="-fx-font-size: 16px; -fx-text-fill: #555555;" text="Connect with your professors easily." />
+
+            <HBox alignment="CENTER" prefHeight="152.0" prefWidth="911.0" spacing="40.0">
+                <VBox prefHeight="126.0" prefWidth="150.0" spacing="10">
+                    <Button onAction="#handleTimeSlots" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #6447D1; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="Define Time Slots">
+                  <font>
+                     <Font size="13.0" />
+                  </font></Button>
+                    <Button onAction="#handleTimeSlotViewer" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #6447D1; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="View Stored Time Slots" />
+                </VBox>
+                <VBox spacing="10">
+                    <Button onAction="#handleOfficeHours" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #6C47FF; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="Define Office Hours" />
+                    <Button onAction="#handleViewStoredOfficeHours" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #6C47FF; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="View Stored Office Hours" />
+                </VBox>
+                <VBox spacing="10">
+                    <Button onAction="#handleCourses" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #8247FF; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="Define Courses" />
+                    <Button onAction="#handleCourseViewer" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #8247FF; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="View Stored Courses" />
+                </VBox>
+            <VBox spacing="10">
+               <children>
+                  <Button onAction="#handleOfficeHoursSchedule" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #682FCC; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="Schedule Office Hours" />
+                  <Button onAction="#handleOfficeHoursScheduleViewer" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: #682FCC; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 10 20; -fx-wrap-text: true;" text="View Stored Office Hours Schedules" />
+               </children>
+            </VBox>
+            </HBox>
+         <Button mnemonicParsing="false" onAction="#handleSearchOfficeHoursSchedule" prefHeight="56.0" prefWidth="355.0" style="-fx-background-radius: 5; -fx-background-color: #4B0082;" text="Search Office Hours" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="44.0" />
+               <Font size="23.0" />
             </font>
-        </Label>
-
-        <VBox layoutX="49.0" layoutY="92.0" prefHeight="158.0" prefWidth="907.0" style="-fx-border-color: #D3D3D3; -fx-border-radius: 10; -fx-background-color: rgba(100, 0, 100, 0.05);">
-            <children>
-                <Label prefHeight="62.0" prefWidth="498.0" text="Search by Student Name">
-                    <font>
-                        <Font name="System Bold" size="30.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets left="5.0" />
-                    </VBox.margin>
-                </Label>
-
-                <Text fill="#595959" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a student name to find their office hours schedules">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets left="5.0" />
-                    </VBox.margin>
-                </Text>
-
-                <HBox prefHeight="31.0" prefWidth="840.0" spacing="15.0">
-                    <children>
-                        <TextField fx:id="searchField" prefHeight="31.0" prefWidth="470.0" promptText="Search by student name..." style="-fx-background-radius: 20;">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </TextField>
-
-                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Edit" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </Button>
-                    </children>
-                    <VBox.margin>
-                        <Insets top="20.0" />
-                    </VBox.margin>
-                </HBox>
-            </children>
-
-            <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </padding>
+         </Button>
         </VBox>
+    </center>
 
-        <TableView fx:id="scheduleTable" layoutX="49.0" layoutY="287.0" prefHeight="288.0" prefWidth="907.0" style="-fx-background-radius: 5; -fx-background-color: #e7e7e7;">
-            <columns>
-                <TableColumn fx:id="nameCol" prefWidth="150.0" text="Student Name" />
-                <TableColumn fx:id="dateCol" prefWidth="120.0" text="Schedule Date" />
-                <TableColumn fx:id="slotCol" prefWidth="150.0" text="Time Slot" />
-                <TableColumn fx:id="courseCol" prefWidth="120.0" text="Course" />
-                <TableColumn fx:id="reasonCol" prefWidth="200.0" text="Reason" />
-                <TableColumn fx:id="commentCol" prefWidth="165.6" text="Comment" />
-            </columns>
-        </TableView>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="1000.0" style="-fx-padding: 10; -fx-background-color: #f5f5f5;">
+            <Label style="-fx-font-size: 12px;" text="© 2025 ProfMeet. All rights reserved." />
+        </HBox>
+    </bottom>
 
-        <Button layoutX="859.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="46.0" prefWidth="97.0" style="-fx-background-color: #6C47FF;" text="Home" textFill="WHITE">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Button>
-      <StackPane fx:id="editForm" layoutX="247.0" layoutY="57.0" prefHeight="488.0" prefWidth="618.0" style="-fx-background-color: white; -fx-background-radius: 20;" visible="false" />
-    </children>
-</AnchorPane>
+</BorderPane>
