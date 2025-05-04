@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.TimeSlotsController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controller.TimeSlotsController">
    <children>
       <VBox layoutX="129.0" layoutY="230.0" prefHeight="318.0" prefWidth="726.0" style="-fx-background-color: rgba(100, 0, 100, 0.05); -fx-background-radius: 20;">
          <children>

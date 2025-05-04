@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.TimeSlotViewerController">
+<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controller.TimeSlotViewerController">
     <TableView fx:id="timeSlotTable" layoutX="17.0" layoutY="53.0" prefHeight="406.0" prefWidth="610.0">
         <columns>
             <TableColumn fx:id="fromTimeColumn" prefWidth="315.199951171875" text="From Time" />

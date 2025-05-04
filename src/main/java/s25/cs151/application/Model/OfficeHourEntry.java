@@ -21,6 +21,29 @@ public class OfficeHourEntry {
     public String getCourse() { return course; }
     public String getReason() { return reason; }
     public String getComment() { return comment; }
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setScheduleDate(String scheduleDate) {
+        this.scheduleDate = scheduleDate;
+    }
+
+    public void setTimeSlot(String timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public LocalDate getParsedDate() {
         return LocalDate.parse(scheduleDate, DateTimeFormatter.ISO_LOCAL_DATE);

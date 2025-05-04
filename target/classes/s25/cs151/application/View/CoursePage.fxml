@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:controller="s25.cs151.application.CourseController"
+<VBox fx:controller="s25.cs151.application.Controller.CourseController"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       spacing="30"
