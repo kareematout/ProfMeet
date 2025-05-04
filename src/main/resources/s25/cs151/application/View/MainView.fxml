@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="s25.cs151.application.Controller.MainController"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="30"
+      alignment="CENTER"
+      style="-fx-padding: 0 20 0 20;
+      -fx-background-color: rgba(100, 0, 100, 0.05);
+      -fx-max-height: 400;
+      -fx-background-radius: 20px;
+      -fx-font-size: 15px;
+      -fx-translate-y: 90;">
+
+  <Label text="Select Date" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+  <HBox spacing="10">
+    <Label text="Semester *"/>
+    <ComboBox fx:id="semesterComboBox"/>
+  </HBox>
+
+  <HBox spacing="10">
+    <Label text="Year *"/>
+    <TextField fx:id="yearTextField" promptText="Ex: 2025"/>
+  </HBox>
+
+  <VBox spacing="5" style="-fx-font-size: 14">
+    <Label text="Days *"/>
+    <HBox spacing="10">
+      <CheckBox fx:id="mondayCheckBox" text="Monday"/>
+      <CheckBox fx:id="tuesdayCheckBox" text="Tuesday"/>
+      <CheckBox fx:id="wednesdayCheckBox" text="Wednesday"/>
+      <CheckBox fx:id="thursdayCheckBox" text="Thursday"/>
+      <CheckBox fx:id="fridayCheckBox" text="Friday"/>
+    </HBox>
+  </VBox>
+
+  <Button text="Submit" style="-fx-background-color: #6C47FF; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#submitOfficeHours"/>
+
+</VBox>
