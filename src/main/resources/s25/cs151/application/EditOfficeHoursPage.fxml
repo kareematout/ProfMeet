@@ -82,6 +82,19 @@
                 <Font size="20.0" />
             </font>
         </Button>
-      <StackPane fx:id="editForm" layoutX="247.0" layoutY="57.0" prefHeight="488.0" prefWidth="618.0" style="-fx-background-color: white; -fx-background-radius: 20;" visible="false" />
+      <StackPane fx:id="editForm" prefHeight="600.0" prefWidth="1000.0">
+         <children>
+            <StackPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black; -fx-opacity: 0.25;">
+               <padding>
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+               </padding>
+            </StackPane>
+            <StackPane prefHeight="163.0" prefWidth="162.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-opacity: 1;">
+               <StackPane.margin>
+                  <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+               </StackPane.margin>
+            </StackPane>
+         </children>
+      </StackPane>
     </children>
 </AnchorPane>
