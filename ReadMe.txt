@@ -2,7 +2,7 @@
 # Version: 0.8
 
 # who did what:
-1. Lydia Essombe-Mpacko - 
+1. Lydia Essombe-Mpacko - Polymorphism and MVC
 2. Kareem Atout - 
 3. Anita Huang - 
 4. Kyle Chu - 
