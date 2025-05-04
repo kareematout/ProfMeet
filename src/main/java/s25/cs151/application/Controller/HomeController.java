@@ -61,6 +61,11 @@ public class HomeController {
         handleSceneSwitch(event, "/s25/cs151/application/view/SearchOfficeHoursSchedulePage.fxml", "ProfMeet - Office Hours Schedule Viewer");
     }
 
+    @FXML
+    private void handleEditOfficeHours(ActionEvent event) {
+        handleSceneSwitch(event, "/s25/cs151/application/view/EditOfficeHoursPage.fxml", "ProfMeet - Edit Office Hours");
+    }
+
     private void handleSceneSwitch(ActionEvent event, String fxmlPath, String windowTitle) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {

@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/HomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
 
         stage.setTitle("ProfMeet - Home");
@@ -53,7 +53,7 @@ public class Main extends Application {
         homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white;");
         homeButton.setOnAction(e -> {
             try {
-                FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/HomePage.fxml"));
                 stage.setScene(new Scene(loader.load(), 1000, 600));
                 stage.setTitle("ProfMeet - Home");
             } catch (IOException ex) {
@@ -98,7 +98,7 @@ public class Main extends Application {
         homeButton.setStyle("-fx-background-color: #6C47FF; -fx-text-fill: white;");
         homeButton.setOnAction(e -> {
             try {
-                FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/HomePage.fxml"));
                 stage.setScene(new Scene(loader.load(), 1000, 600));
                 stage.setTitle("ProfMeet - Home");
             } catch (IOException ex) {
@@ -150,7 +150,7 @@ public class Main extends Application {
 
     private static VBox CreateFormVBox() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/MainView.fxml"));
             VBox dropdownContent = loader.load();
             VBox layout = new VBox();
             layout.setStyle(dropdownContent.getStyle());
@@ -169,7 +169,7 @@ public class Main extends Application {
     private static VBox CreateCourseFormVBox() {
         try {
             // Load the FXML for the course page form
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("CoursePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/CoursePage.fxml"));
 
             // Load the FXML content into a VBox (root node of the FXML)
             VBox dropdownContent = loader.load();

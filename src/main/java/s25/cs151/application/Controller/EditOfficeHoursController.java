@@ -14,31 +14,24 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
+import s25.cs151.application.EditScheduleForm;
+import s25.cs151.application.Model.OfficeHourEntry;
 
 public class EditOfficeHoursController extends NavigationController {
-    @FXML
-    private TextField searchField;
-    @FXML
-    private TableView<OfficeHourEntry> scheduleTable;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> nameCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> dateCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> slotCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> courseCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> reasonCol;
-    @FXML
-    private TableColumn<OfficeHourEntry, String> commentCol;
-    @FXML
-    private Button editButton;
+    @FXML private TextField studentNameField;
+    @FXML private TextArea reasonField, commentField;
+    @FXML private DatePicker scheduleDatePicker;
+    @FXML private ComboBox<String> timeSlotComboBox, courseComboBox;
+    @FXML private TextField searchField;
+    @FXML private TableView<OfficeHourEntry> scheduleTable;
+    @FXML private TableColumn<OfficeHourEntry, String> nameCol, dateCol, slotCol, courseCol, reasonCol, commentCol;
+    @FXML private StackPane editForm = new StackPane();
+    @FXML private Button editButton;
+
     private final ObservableList<OfficeHourEntry> fullList = FXCollections.observableArrayList();
     private final ObservableList<OfficeHourEntry> filteredList = FXCollections.observableArrayList();
 
@@ -130,7 +123,18 @@ public class EditOfficeHoursController extends NavigationController {
         if (selected == null) {
             this.showErrorMessage("Please select a schedule to edit.");
         } else {
-            EditScheduleForm.show(selected, this.fullList, this.filteredList);
+            toggleFormVisibility();
+            // EditScheduleForm.show(selected, this.fullList, this.filteredList);
         }
+    }
+
+    @FXML
+    private void handleSaveEdit() {
+        toggleFormVisibility();
+    }
+
+    @FXML
+    private void toggleFormVisibility() {
+        editForm.setVisible(!editForm.isVisible());
     }
 }
