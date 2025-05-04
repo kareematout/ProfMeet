@@ -15,11 +15,11 @@ Polymorphism Used:
     - CourseController
     - CourseViewerController
     - DisplayOfficeHoursController
-    - EditOfficeHoursPageController
+    - EditOfficeHoursController
     - MainController
     - OfficeHoursScheduleController
     - OfficeHoursScheduleViewerController
     - SearchOfficeHoursScheduleController
-    - TimeSlotsController
     - TimeSlotViewerController
+    - TimeSlotsController
 
