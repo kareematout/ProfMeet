@@ -3,9 +3,9 @@
 
 # who did what:
 1. Lydia Essombe-Mpacko - Polymorphism and MVC Layers
-2. Kareem Atout - UI and Navigation
+2. Kareem Atout - Edit Office Hours Page UI and Navigation
 3. Anita Huang - Create Edit Office Hours Page
-4. Kyle Chu - Save Function
+4. Kyle Chu - Edit Office Hours Page Save Function
 
 
 # Any other instruction that users need to know:
