@@ -134,6 +134,7 @@ public class EditOfficeHoursController extends NavigationController {
 
         sortList(fullList);
         filteredList.setAll(fullList);
+        showSuccessMessage("Office Hours saved successfully.");
         toggleVisibility(editForm);
     }
 
